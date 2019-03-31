@@ -1,0 +1,86 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "Akame with audio visualizer, clock, and snow particles!",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"radius" : 
+			{
+				"max" : 80,
+				"min" : 40,
+				"order" : 101,
+				"text" : "Radius",
+				"type" : "slider",
+				"value" : 50
+			},
+			"range" : 
+			{
+				"max" : 15,
+				"min" : 1,
+				"order" : 102,
+				"text" : "Range",
+				"type" : "slider",
+				"value" : 6
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"showTime" : 
+			{
+				"order" : 104,
+				"text" : "Show Clock",
+				"type" : "bool",
+				"value" : true
+			},
+			"timeFormat": 
+			{
+				"order" : 105,
+				"text" : "24h Format",
+				"type" : "bool",
+				"value" : false
+			},
+			"snow" : 
+			{
+				"order" : 107,
+				"text" : "Snow",
+				"type" : "bool",
+				"value" : true
+			},
+			"style" : 
+			{
+				"options" : 
+				[
+					{
+						"label" : "Curves Filled",
+						"value" : 3
+					}
+				],
+				"order" : 100,
+				"text" : "Style",
+				"type" : "combo",
+				"value" : 3
+			},
+			"tSize" : 
+			{
+				"max" : 45,
+				"min" : 20,
+				"order" : 106,
+				"text" : "Clock size",
+				"type" : "slider",
+				"value" : 36
+			}
+		},
+		"supportsaudioprocessing" : true
+	},
+	"preview" : "preview.jpg",
+	"tags" : [ "Anime" ],
+	"title" : "Akame",
+	"type" : "web",
+	"visibility" : "public"
+}

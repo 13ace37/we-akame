@@ -1,0 +1,47 @@
+html,body, #logo, #snow_container {
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+body {
+  background: url('background.png') center / cover;
+}
+#logo {
+  background: url('logo.png') center / cover;
+  z-index: 11;
+  position: absolute;
+}
+#clock {
+  position:absolute;
+  top:0;
+  left:0;
+  text-align:center;
+  color:#fff;
+  font-family:"Light","Microsoft Yahei Light";
+  font-size:200px;
+  z-index:12;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.6)
+}
+#clock .sec {
+  font-size:0.3em;
+}
+#time {
+  position:relative;
+}
+#clock .st {
+  position:absolute;
+  right:2%;
+  top:15%;
+  font-size:0.25em;
+  line-height:1;
+}
+#can {
+  margin:0;
+  padding:0;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:10;
+}
