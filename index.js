@@ -204,31 +204,31 @@ function style3(isFill, bufferNum) {
     prev = arrT[len - 1],
     now = arrT[0],
     next,
-    center_next;
+    centerNext;
 
   if (buffer.length < 1) {
     return;
   }
 
-  center_next = {
+  centerNext = {
     x: (prev.x + now.x) / 2,
     y: (prev.y + now.y) / 2
   };
 
   ctx.beginPath();
-  ctx.moveTo(center_next.x, center_next.y);
+  ctx.moveTo(centerNext.x, centerNext.y);
 
 
   for (var i = 0; i < len; i++) {
     now = arrT[i];
-    next = arrT[(i == len - 1 ? -1 : i) + 1];
+    next = arrT[(i === len - 1 ? -1 : i) + 1];
 
-    center_next = {
+    centerNext = {
       x: (next.x + now.x) / 2,
       y: (next.y + now.y) / 2
     };
 
-    ctx.quadraticCurveTo(now.x, now.y, center_next.x, center_next.y);
+    ctx.quadraticCurveTo(now.x, now.y, centerNext.x, centerNext.y);
   }
   ctx.closePath();
   ctx.stroke();
