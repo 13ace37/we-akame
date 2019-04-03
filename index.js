@@ -21,6 +21,12 @@ var oClock = document.querySelector("#clock");
 var tStyle = true;
 var timeFormat = true;
 
+function runClock() {
+  param.audioClock = setInterval(animate, 1000 / param.fps);
+  animate();
+}
+runClock();
+
 function a(n) {
   return ("00" + n).slice(-2);
 }
@@ -264,9 +270,3 @@ function animate() {
       break;
   }
 }
-
-function runClock() {
-  param.audioClock = setInterval(animate, 1000 / param.fps);
-  animate();
-}
-runClock();
