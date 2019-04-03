@@ -46,10 +46,10 @@ function getTime(t, tt) {
   }
 }
 
-var time_interval;
+var timeInterval;
 
 function autoTime() {
-  time_interval = setInterval(getTime, 10);
+  timeInterval = setInterval(getTime, 10);
   getTime();
 }
 
@@ -76,7 +76,7 @@ param.waveArr = new Array(param.len + 1).join("0").split("");
 function getCollor(v, a) {
   return "rgba(" + (v.split(" ").map(function (c) {
     return Math.round(c * 255);
-  }).join(', ')) + ',' + a + ')';
+  }).join(", ")) + "," + a + ")";
 }
 
 window.wallpaperPropertyListener = {
@@ -106,7 +106,7 @@ window.wallpaperPropertyListener = {
       if (properties.showTime.value) {
         autoTime();
       } else {
-        clearInterval(time_interval);
+        clearInterval(timeInterval);
       }
     }
     if (properties.tSize) {
@@ -192,11 +192,11 @@ function style2() {
   ctx.stroke();
 }
 
-function style3(is_fill, buffer_num) {
-  var arr_t = buffer[buffer_num],
-    len = arr_t.length,
-    prev = arr_t[len - 1],
-    now = arr_t[0],
+function style3(isFill, bufferNum) {
+  var arrT = buffer[bufferNum],
+    len = arrT.length,
+    prev = arrT[len - 1],
+    now = arrT[0],
     next,
     center_next;
 
@@ -214,8 +214,8 @@ function style3(is_fill, buffer_num) {
 
 
   for (var i = 0; i < len; i++) {
-    now = arr_t[i];
-    next = arr_t[(i == len - 1 ? -1 : i) + 1];
+    now = arrT[i];
+    next = arrT[(i == len - 1 ? -1 : i) + 1];
 
     center_next = {
       x: (next.x + now.x) / 2,
@@ -226,7 +226,7 @@ function style3(is_fill, buffer_num) {
   }
   ctx.closePath();
   ctx.stroke();
-  if (is_fill) {
+  if (isFill) {
     ctx.fill();
   }
 }
