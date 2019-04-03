@@ -10,7 +10,7 @@ var param = {
   tY: 50,
   range: 1,
   len: 128,
-  time: '',
+  time: "",
   fps: 60,
   audioClock: 0
 };
@@ -22,24 +22,24 @@ var tStyle = true;
 var timeFormat = true;
 
 function a(n) {
-  return ('00' + n).slice(-2);
+  return ("00" + n).slice(-2);
 }
 
 function formatAMPM(date = new Date()) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
+  var ampm = hours >= 12 ? "pm" : "am";
   hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
+  hours = hours ? hours : 12; // the hour "0" should be "12"
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
 
 function getTime(t, tt) {
   t = new Date();
   if (!timeFormat) tt = formatAMPM(t);
-  if (timeFormat) tt = a(t.getHours()) + ':' + a(t.getMinutes());
+  if (timeFormat) tt = a(t.getHours()) + ":" + a(t.getMinutes());
   if (param.time !== tt) {
     oClock.innerHTML = tt;
     param.time = tt;

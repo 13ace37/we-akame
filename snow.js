@@ -33,10 +33,10 @@ var snowStorm = (function(window, document) {
   this.excludeMobile = true;      // Snow is likely to be bad news for mobile phones' CPUs (and batteries.) By default, be nice.
   this.flakeBottom = null;        // Integer for Y axis snow limit, 0 or null for "full-screen" snow effect
   this.followMouse = false;        // Snow movement can respond to the user's mouse
-  this.snowColor = '#fff';        // Don't eat (or use?) yellow snow.
-  this.snowCharacter = '&bull;';  // &bull; = bullet, &middot; is square on some systems etc.
+  this.snowColor = "#fff";        // Don't eat (or use?) yellow snow.
+  this.snowCharacter = "&bull;";  // &bull; = bullet, &middot; is square on some systems etc.
   this.snowStick = false;          // Whether or not snow should "stick" at the bottom. When off, will never collect.
-  this.targetElement = 'snow_container';      // element which snow will be appended to (null = document.body) - can be an element ID eg. 'myDiv', or a DOM node reference
+  this.targetElement = "snow_container";      // element which snow will be appended to (null = document.body) - can be an element ID eg. 'myDiv', or a DOM node reference
   this.useMeltEffect = true;      // When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it
   this.useTwinkleEffect = false;  // Allow snow to randomly "flicker" in and out of view while falling
   this.usePositionFixed = false;  // true = snow does not shift vertically when scrolling. May increase CPU load, disabled by default - if enabled, used only where supported
@@ -61,7 +61,7 @@ var snowStorm = (function(window, document) {
   isIE = navigator.userAgent.match(/msie/i),
   isIE6 = navigator.userAgent.match(/msie 6/i),
   isMobile = navigator.userAgent.match(/mobile|opera m(ob|in)/i),
-  isBackCompatIE = (isIE && document.compatMode === 'BackCompat'),
+  isBackCompatIE = (isIE && document.compatMode === "BackCompat"),
   noFixed = (isBackCompatIE || isIE6),
   screenX = null, screenX2 = null, screenY = null, scrollY = null, docHeight = null, vRndX = null, vRndY = null,
   windOffset = 1,
@@ -100,7 +100,7 @@ var snowStorm = (function(window, document) {
 
     var testDiv;
 
-    testDiv = document.createElement('div');
+    testDiv = document.createElement("div");
 
     function has(prop) {
 
@@ -378,16 +378,16 @@ var snowStorm = (function(window, document) {
       this.o.style[features.transform.prop] = "translate3d(0px, 0px, 0px)";
     }
     this.o.style.backgroundImage = "url('ParticleSmoke.png')";
-    this.o.style.backgroundSize = 'cover';
+    this.o.style.backgroundSize = "cover";
 
     fs = Math.floor((Math.random() * 20) + 3);
 
-    this.o.style.width = fs+'px';
-    this.o.style.height = fs+'px';
-    this.o.style.fontFamily = 'arial,verdana';
-    this.o.style.cursor = 'default';
-    this.o.style.overflow = 'hidden';
-    this.o.style.fontWeight = 'normal';
+    this.o.style.width = fs+"px";
+    this.o.style.height = fs+"px";
+    this.o.style.fontFamily = "arial,verdana";
+    this.o.style.cursor = "default";
+    this.o.style.overflow = "hidden";
+    this.o.style.fontWeight = "normal";
     this.o.style.zIndex = storm.zIndex;
     this.o.style.opacity = (Math.floor((Math.random() * 10) + 3)) / 10;
     docFrag.appendChild(this.o);
@@ -402,14 +402,14 @@ var snowStorm = (function(window, document) {
 
     this.stick = function() {
       if (noFixed || (storm.targetElement !== document.documentElement && storm.targetElement !== document.body)) {
-        s.o.style.top = (screenY+scrollY-storm.flakeHeight)+'px';
+        s.o.style.top = (screenY+scrollY-storm.flakeHeight)+"px";
       } else if (storm.flakeBottom) {
-        s.o.style.top = storm.flakeBottom+'px';
+        s.o.style.top = storm.flakeBottom+"px";
       } else {
-        s.o.style.display = 'none';
-        s.o.style.bottom = '0%';
-        s.o.style.position = 'fixed';
-        s.o.style.display = 'block';
+        s.o.style.display = "none";
+        s.o.style.bottom = "0%";
+        s.o.style.position = "fixed";
+        s.o.style.display = "block";
       }
     };
 
@@ -457,7 +457,7 @@ var snowStorm = (function(window, document) {
             }
           } else {
             s.twinkleFrame--;
-            s.o.style.visibility = (s.twinkleFrame && s.twinkleFrame % 2 === 0 ? 'hidden' : 'visible');
+            s.o.style.visibility = (s.twinkleFrame && s.twinkleFrame % 2 === 0 ? "hidden" : "visible");
           }
         }
       }
@@ -479,8 +479,8 @@ var snowStorm = (function(window, document) {
         s.recycle();
       } else {
         if (s.meltFrame < s.meltFrameCount) {
-          s.o.style.fontSize = s.fontSize-(s.fontSize*(s.meltFrame/s.meltFrameCount))+'px';
-          s.o.style.lineHeight = storm.flakeHeight+2+(storm.flakeHeight*0.75*(s.meltFrame/s.meltFrameCount))+'px';
+          s.o.style.fontSize = s.fontSize-(s.fontSize*(s.meltFrame/s.meltFrameCount))+"px";
+          s.o.style.lineHeight = storm.flakeHeight+2+(storm.flakeHeight*0.75*(s.meltFrame/s.meltFrameCount))+"px";
           s.meltFrame++;
         } else {
           s.recycle();
@@ -489,22 +489,22 @@ var snowStorm = (function(window, document) {
     };
 
     this.recycle = function() {
-      s.o.style.display = 'none';
+      s.o.style.display = "none";
       s.setVelocities();
       s.vCheck();
       s.meltFrame = 0;
       s.melting = false;
       s.o.style.opacity = (Math.floor((Math.random() * 10) + 2)) / 10;
-      s.o.style.padding = '0px';
-      s.o.style.margin = '0px';
-      s.o.style.fontSize = s.fontSize+'px';
-      s.o.style.lineHeight = (storm.flakeHeight+2)+'px';
-      s.o.style.textAlign = 'center';
-      s.o.style.verticalAlign = 'baseline';
+      s.o.style.padding = "0px";
+      s.o.style.margin = "0px";
+      s.o.style.fontSize = s.fontSize+"px";
+      s.o.style.lineHeight = (storm.flakeHeight+2)+"px";
+      s.o.style.textAlign = "center";
+      s.o.style.verticalAlign = "baseline";
       s.x = parseInt(rnd(screenX-storm.flakeWidth-20),10);
       s.y = parseInt(rnd(screenY)*-1,10)-storm.flakeHeight;
       s.refresh();
-      s.o.style.display = 'block';
+      s.o.style.display = "block";
       s.active = 1;
     };
 
@@ -571,21 +571,21 @@ var snowStorm = (function(window, document) {
     }
     storm.randomizeWind();
     storm.createSnow(storm.flakesMax); // create initial batch
-    storm.events.add(window,'resize',storm.resizeHandler);
-    storm.events.add(window,'scroll',storm.scrollHandler);
+    storm.events.add(window,"resize",storm.resizeHandler);
+    storm.events.add(window,"scroll",storm.scrollHandler);
     if (storm.freezeOnBlur) {
       if (isIE) {
-        storm.events.add(document,'focusout',storm.freeze);
-        storm.events.add(document,'focusin',storm.resume);
+        storm.events.add(document,"focusout",storm.freeze);
+        storm.events.add(document,"focusin",storm.resume);
       } else {
-        storm.events.add(window,'blur',storm.freeze);
-        storm.events.add(window,'focus',storm.resume);
+        storm.events.add(window,"blur",storm.freeze);
+        storm.events.add(window,"focus",storm.resume);
       }
     }
     storm.resizeHandler();
     storm.scrollHandler();
     if (storm.followMouse) {
-      storm.events.add(isIE?document:window,'mousemove',storm.mouseMove);
+      storm.events.add(isIE?document:window,"mousemove",storm.mouseMove);
     }
     storm.animationInterval = Math.max(20,storm.animationInterval);
     storm.timerInit();
@@ -598,11 +598,11 @@ var snowStorm = (function(window, document) {
       // already loaded and running
       return true;
     }
-    if (typeof storm.targetElement === 'string') {
+    if (typeof storm.targetElement === "string") {
       var targetID = storm.targetElement;
       storm.targetElement = document.getElementById(targetID);
       if (!storm.targetElement) {
-        throw new Error('Snowstorm: Unable to get targetElement "'+targetID+'"');
+        throw new Error("Snowstorm: Unable to get targetElement '"+targetID+"'");
       }
     }
     if (!storm.targetElement) {
@@ -619,7 +619,7 @@ var snowStorm = (function(window, document) {
     if (window.getComputedStyle) {
       // attempt to determine if body or user-specified snow parent element is relatlively-positioned.
       try {
-        targetElementIsRelative = (window.getComputedStyle(storm.targetElement, null).getPropertyValue('position') === 'relative');
+        targetElementIsRelative = (window.getComputedStyle(storm.targetElement, null).getPropertyValue("position") === "relative");
       } catch(e) {
         // oh well
         targetElementIsRelative = false;
@@ -637,7 +637,7 @@ var snowStorm = (function(window, document) {
       storm.start(true);
     }, 20);
     // event cleanup
-    storm.events.remove(isIE?document:window,'mousemove',doDelayedStart);
+    storm.events.remove(isIE?document:window,"mousemove",doDelayedStart);
   }
 
   function doStart() {
@@ -645,12 +645,12 @@ var snowStorm = (function(window, document) {
       doDelayedStart();
     }
     // event cleanup
-    storm.events.remove(window, 'load', doStart);
+    storm.events.remove(window, "load", doStart);
   }
 
   // hooks for starting the snow
   if (storm.autoStart) {
-    storm.events.add(window, 'load', doStart, false);
+    storm.events.add(window, "load", doStart, false);
   }
 
   return this;
