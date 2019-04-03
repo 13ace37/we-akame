@@ -12,7 +12,7 @@ var param = {
   len: 128,
   time: '',
   fps: 60,
-  audio_clock: 0
+  audioClock: 0
 };
 
 var w, h, minW;
@@ -71,10 +71,10 @@ var ctx = can.getContext("2d");
 ctx.strokeStyle = ctx.fillStyle = param.color;
 ctx.lineWidth = 3;
 
-param.waveArr = new Array(param.len + 1).join('0').split('');
+param.waveArr = new Array(param.len + 1).join("0").split("");
 
 function getCollor(v, a) {
-  return 'rgba(' + (v.split(" ").map(function (c) {
+  return "rgba(" + (v.split(" ").map(function (c) {
     return Math.round(c * 255);
   }).join(', ')) + ',' + a + ')';
 }
@@ -119,12 +119,12 @@ window.wallpaperPropertyListener = {
     }
     if (properties.snow) {
       document.querySelector("#snow_container").style.display = properties.snow.value ? "block" : "none";
-      snowStorm[properties.snow.value ? 'resume' : 'freeze']();
+      snowStorm[properties.snow.value ? "resume" : "freeze"]();
     }
     if (properties.fps) {
       param.fps = properties.fps;
-      clearInterval(param.audio_clock);
-      run_clock();
+      clearInterval(param.audioClock);
+      runClock();
     }
   }
 };
@@ -247,13 +247,13 @@ function animate() {
       if (buffer.length > 1) {
         if (buffer.length > 2) {
           if (buffer.length > 3) {
-            ctx.strokeStyle = ctx.fillStyle = '#40276f';
+            ctx.strokeStyle = ctx.fillStyle = "#40276f";
             style3(true, 3);
           }
-          ctx.strokeStyle = ctx.fillStyle = '#6354be';
+          ctx.strokeStyle = ctx.fillStyle = "#6354be";
           style3(true, 2);
         }
-        ctx.strokeStyle = ctx.fillStyle = '#ff4202';
+        ctx.strokeStyle = ctx.fillStyle = "#ff4202";
         style3(true, 1);
         ctx.strokeStyle = ctx.fillStyle = param.color;
       }
@@ -265,8 +265,8 @@ function animate() {
   }
 }
 
-function run_clock() {
-  param.audio_clock = setInterval(animate, 1000 / param.fps);
+function runClock() {
+  param.audioClock = setInterval(animate, 1000 / param.fps);
   animate();
 }
-run_clock();
+runClock();

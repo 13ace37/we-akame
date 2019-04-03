@@ -114,11 +114,11 @@ var snowStorm = (function(window, document) {
     var localFeatures = {
 
       transform: {
-        ie:  has('-ms-transform'),
-        moz: has('MozTransform'),
-        opera: has('OTransform'),
-        webkit: has('webkitTransform'),
-        w3: has('transform'),
+        ie:  has("-ms-transform"),
+        moz: has("MozTransform"),
+        opera: has("OTransform"),
+        webkit: has("webkitTransform"),
+        w3: has("transform"),
         prop: null // the normalized property value
       },
 
@@ -155,28 +155,28 @@ var snowStorm = (function(window, document) {
 
     if (storm.usePixelPosition || targetElementIsRelative) {
 
-      o.style.left = (x - storm.flakeWidth) + 'px';
-      o.style.top = (y - storm.flakeHeight) + 'px';
+      o.style.left = (x - storm.flakeWidth) + "px";
+      o.style.top = (y - storm.flakeHeight) + "px";
 
     } else if (noFixed) {
 
-      o.style.right = (100-(x/screenX*100)) + '%';
+      o.style.right = (100-(x/screenX*100)) + "%";
       // avoid creating vertical scrollbars
-      o.style.top = (Math.min(y, docHeight-storm.flakeHeight)) + 'px';
+      o.style.top = (Math.min(y, docHeight-storm.flakeHeight)) + "px";
 
     } else {
 
       if (!storm.flakeBottom) {
 
         // if not using a fixed bottom coordinate...
-        o.style.right = (100-(x/screenX*100)) + '%';
-        o.style.bottom = (100-(y/screenY*100)) + '%';
+        o.style.right = (100-(x/screenX*100)) + "%";
+        o.style.bottom = (100-(y/screenY*100)) + "%";
 
       } else {
 
         // absolute top.
-        o.style.right = (100-(x/screenX*100)) + '%';
-        o.style.top = (Math.min(y, docHeight-storm.flakeHeight)) + 'px';
+        o.style.right = (100-(x/screenX*100)) + "%";
+        o.style.top = (Math.min(y, docHeight-storm.flakeHeight)) + "px";
 
       }
 
@@ -188,14 +188,14 @@ var snowStorm = (function(window, document) {
 
     var old = (!window.addEventListener && window.attachEvent), slice = Array.prototype.slice,
     evt = {
-      add: (old?'attachEvent':'addEventListener'),
-      remove: (old?'detachEvent':'removeEventListener')
+      add: (old?"attachEvent":"addEventListener"),
+      remove: (old?"detachEvent":"removeEventListener")
     };
 
     function getArgs(oArgs) {
       var args = slice.call(oArgs), len = args.length;
       if (old) {
-        args[1] = 'on' + args[1]; // prefix
+        args[1] = "on" + args[1]; // prefix
         if (len > 3) {
           args.pop(); // no capture
         }
@@ -216,11 +216,11 @@ var snowStorm = (function(window, document) {
     }
 
     function addEvent() {
-      apply(getArgs(arguments), 'add');
+      apply(getArgs(arguments), "add");
     }
 
     function removeEvent() {
-      apply(getArgs(arguments), 'remove');
+      apply(getArgs(arguments), "remove");
     }
 
     return {
@@ -328,17 +328,17 @@ var snowStorm = (function(window, document) {
     var i;
     this.freeze();
     for (i=0; i<this.flakes.length; i++) {
-      this.flakes[i].o.style.display = 'none';
+      this.flakes[i].o.style.display = "none";
     }
-    storm.events.remove(window,'scroll',storm.scrollHandler);
-    storm.events.remove(window,'resize',storm.resizeHandler);
+    storm.events.remove(window,"scroll",storm.scrollHandler);
+    storm.events.remove(window,"resize",storm.resizeHandler);
     if (storm.freezeOnBlur) {
       if (isIE) {
-        storm.events.remove(document,'focusout',storm.freeze);
-        storm.events.remove(document,'focusin',storm.resume);
+        storm.events.remove(document,"focusout",storm.freeze);
+        storm.events.remove(document,"focusin",storm.resume);
       } else {
-        storm.events.remove(window,'blur',storm.freeze);
-        storm.events.remove(window,'focus',storm.resume);
+        storm.events.remove(window,"blur",storm.freeze);
+        storm.events.remove(window,"focus",storm.resume);
       }
     }
   };
@@ -346,7 +346,7 @@ var snowStorm = (function(window, document) {
   this.show = function() {
     var i;
     for (i=0; i<this.flakes.length; i++) {
-      this.flakes[i].o.style.display = 'block';
+      this.flakes[i].o.style.display = "block";
     }
   };
 
@@ -366,16 +366,16 @@ var snowStorm = (function(window, document) {
     this.twinkleFrame = 0;
     this.active = 1;
     this.fontSize = (10+(this.type/5)*10);
-    this.o = document.createElement('div');
+    this.o = document.createElement("div");
     //this.o.innerHTML = storm.snowCharacter;
     if (storm.className) {
-      this.o.setAttribute('class', storm.className);
+      this.o.setAttribute("class", storm.className);
     }
     this.o.style.color = storm.snowColor;
-    this.o.style.position = (fixedForEverything?'fixed':'absolute');
+    this.o.style.position = (fixedForEverything?"fixed":"absolute");
     if (storm.useGPU && features.transform.prop) {
       // GPU-accelerated snow.
-      this.o.style[features.transform.prop] = 'translate3d(0px, 0px, 0px)';
+      this.o.style[features.transform.prop] = "translate3d(0px, 0px, 0px)";
     }
     this.o.style.backgroundImage = "url('ParticleSmoke.png')";
     this.o.style.backgroundSize = 'cover';
